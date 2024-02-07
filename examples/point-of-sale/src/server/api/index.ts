@@ -66,13 +66,6 @@ const post: NextApiHandler<PostResponse> = async (request, response) => {
     if (!accountField) throw new Error('missing account');
     if (typeof accountField !== 'string') throw new Error('invalid account');
     const account = new PublicKey(accountField);
-
-    console.log("llego-->");
-    console.log(recipient);
-    console.log(amount);
-    console.log(splToken);
-    console.log(reference);
-    console.log(memo);
     // Compose a simple transfer transaction to return. In practice, this can be any transaction, and may be signed.
     let transaction = await createTransfer(connection, account, {
         recipient,
@@ -91,8 +84,7 @@ const post: NextApiHandler<PostResponse> = async (request, response) => {
             requireAllSignatures: false,
         })
     );
-
-    console.log(transaction);
+    
 
     // Serialize and return the unsigned transaction.
     const serialized = transaction.serialize({

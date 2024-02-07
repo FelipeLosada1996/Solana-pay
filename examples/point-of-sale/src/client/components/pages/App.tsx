@@ -16,6 +16,7 @@ import { SolanaPayLogo } from '../images/SolanaPayLogo';
 import { SOLIcon } from '../images/SOLIcon';
 import { USDCIcon } from '../images/USDCIcon';
 import css from './App.module.css';
+import { MAINNET_ENDPOINT, MAINNET_USDC_MINT } from '../../utils/constants';
 
 interface AppProps extends NextAppProps {
     host: string;
@@ -74,6 +75,7 @@ const App: FC<AppProps> & { getInitialProps(appContext: AppContext): Promise<App
                                     link={link}
                                     recipient={recipient}
                                     label={label}
+                                    splToken={MAINNET_USDC_MINT}
                                     message={message}
                                     symbol="USDC"
                                     icon={<USDCIcon />}
